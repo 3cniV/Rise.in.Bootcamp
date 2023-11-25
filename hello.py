@@ -15,5 +15,11 @@ def echo(name) :
     return f"Hello {name}"
 
 if __name__ == '__name__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='127.0.0.0.0', port=8080, debug=True)
+
+@app.route("/ping")
+def ping():
+    ping = response_time()
+    return jsonify({"message": "pong!", "ping": ping})
+    
 
